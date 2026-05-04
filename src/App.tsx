@@ -494,7 +494,7 @@ function App() {
 
           <div className="grid gap-8 md:grid-cols-3">
             <div className="list-block">
-              <div className="flex items-center gap-3 text-primary">
+              <div className="list-header flex items-center gap-3 text-primary">
                 <ScrollText className="size-4" />
                 <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-primary/75">
                   Leadership and in-house work
@@ -511,7 +511,7 @@ function App() {
             </div>
 
             <div className="list-block">
-              <div className="flex items-center gap-3 text-primary">
+              <div className="list-header flex items-center gap-3 text-primary">
                 <BookOpenText className="size-4" />
                 <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-primary/75">
                   Advisory and consulting
@@ -528,7 +528,7 @@ function App() {
             </div>
 
             <div className="list-block">
-              <div className="flex items-center gap-3 text-primary">
+              <div className="list-header flex items-center gap-3 text-primary">
                 <BookOpenText className="size-4" />
                 <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-primary/75">
                   Teaching
@@ -632,9 +632,6 @@ function App() {
                 Message on LinkedIn
                 <ExternalLink className="size-4" />
               </a>
-              <p className="text-sm text-muted-foreground">
-                nerocorax@gmail.com
-              </p>
             </div>
           </div>
         </section>
