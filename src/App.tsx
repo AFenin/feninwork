@@ -205,6 +205,28 @@ const teachingBackground: BackgroundItem[] = [
   },
 ]
 
+const backgroundColumns = [
+  {
+    title: "Leadership and in-house work",
+    icon: ScrollText,
+    items: leadershipBackground,
+  },
+  {
+    title: "Advisory and consulting",
+    icon: BookOpenText,
+    items: advisoryClients,
+  },
+  {
+    title: "Teaching",
+    icon: BookOpenText,
+    items: teachingBackground,
+  },
+]
+
+const maxBackgroundRows = Math.max(
+  ...backgroundColumns.map((column) => column.items.length),
+)
+
 function App() {
   return (
     <div className="page-shell">
@@ -492,57 +514,58 @@ function App() {
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="list-block">
-              <div className="list-header flex items-center gap-3 text-primary">
-                <ScrollText className="size-4" />
-                <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-primary/75">
-                  Leadership and in-house work
-                </p>
+          <div className="md:hidden grid gap-8">
+            {backgroundColumns.map((column) => (
+              <div key={column.title} className="list-block">
+                <div className="flex items-center gap-3 text-primary">
+                  <column.icon className="size-4" />
+                  <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-primary/75">
+                    {column.title}
+                  </p>
+                </div>
+                <ul className="detail-list mt-4">
+                  {column.items.map((item) => (
+                    <li key={item.name} className="detail-item">
+                      <p className="detail-name">{item.name}</p>
+                      <p className="detail-description">{item.description}</p>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="detail-list mt-4">
-                {leadershipBackground.map((item) => (
-                  <li key={item.name} className="detail-item">
-                    <p className="detail-name">{item.name}</p>
-                    <p className="detail-description">{item.description}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            ))}
+          </div>
 
-            <div className="list-block">
-              <div className="list-header flex items-center gap-3 text-primary">
-                <BookOpenText className="size-4" />
-                <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-primary/75">
-                  Advisory and consulting
-                </p>
+          <div className="background-table hidden md:grid">
+            {backgroundColumns.map((column) => (
+              <div key={column.title} className="background-header">
+                <div className="flex items-start gap-3 text-primary">
+                  <column.icon className="mt-0.5 size-4 shrink-0" />
+                  <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-primary/75">
+                    {column.title}
+                  </p>
+                </div>
               </div>
-              <ul className="detail-list mt-4">
-                {advisoryClients.map((item) => (
-                  <li key={item.name} className="detail-item">
-                    <p className="detail-name">{item.name}</p>
-                    <p className="detail-description">{item.description}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            ))}
 
-            <div className="list-block">
-              <div className="list-header flex items-center gap-3 text-primary">
-                <BookOpenText className="size-4" />
-                <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-primary/75">
-                  Teaching
-                </p>
-              </div>
-              <ul className="detail-list mt-4">
-                {teachingBackground.map((item) => (
-                  <li key={item.name} className="detail-item">
-                    <p className="detail-name">{item.name}</p>
-                    <p className="detail-description">{item.description}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {Array.from({ length: maxBackgroundRows }).map((_, rowIndex) =>
+              backgroundColumns.map((column) => {
+                const item = column.items[rowIndex]
+
+                return (
+                  <div
+                    key={`${column.title}-${item?.name ?? `empty-${rowIndex}`}`}
+                    className="background-cell"
+                  >
+                    {item ? (
+                      <article className="detail-item detail-item-table">
+                        <p className="detail-name">{item.name}</p>
+                        <p className="detail-description">{item.description}</p>
+                      </article>
+                    ) : null}
+                  </div>
+                )
+              }),
+            )}
           </div>
         </section>
 

@@ -190,7 +190,6 @@
 }
 
 .list-header {
-  min-height: 4.8rem;
   align-items: flex-start;
 }
 
@@ -218,11 +217,28 @@
   color: var(--muted-foreground);
 }
 
-@media (min-width: 768px) {
-  .list-header {
-    min-height: 5.4rem;
-  }
+.background-table {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 2.2rem;
+  row-gap: 1.6rem;
+  align-items: start;
+}
 
+.background-header {
+  border-top: 1px solid color-mix(in oklab, var(--border) 92%, transparent);
+  padding-top: 1.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.background-cell {
+  min-width: 0;
+}
+
+.detail-item-table {
+  margin: 0;
+}
+
+@media (min-width: 768px) {
   .detail-list {
     margin-top: 1.6rem;
   }
