@@ -47,6 +47,11 @@ type Article = {
   note: string
 }
 
+type BackgroundItem = {
+  name: string
+  description: string
+}
+
 const reveal = (delay: number): CSSProperties =>
   ({ ["--delay" as string]: `${delay}ms` }) as CSSProperties
 
@@ -62,13 +67,13 @@ const painPoints: InsightBlock[] = [
     icon: Network,
   },
   {
-    title: "Dashboards cannot explain themselves",
-    body: "Teams can see movement in the numbers, but they cannot drill down to the original language behind those changes or connect prioritisation to concrete evidence.",
+    title: "Secondary findings disappear with every study",
+    body: "Most research contains valuable observations beyond the headline question, but those side findings get buried in decks and reports instead of becoming reusable organisational knowledge.",
     icon: Workflow,
   },
   {
-    title: "Manual processing does not scale safely",
-    body: "High-volume feedback loops get blocked by tagging overhead, privacy constraints, and unstructured inputs that are too messy for naive RAG or static documentation alone.",
+    title: "New research requests pile up behind the same bottleneck",
+    body: "Because old knowledge is hard to search, combine, and re-analyse, teams order new studies, queues grow, and researchers end up reproducing answers that should already be within reach.",
     icon: ShieldCheck,
   },
 ]
@@ -136,8 +141,69 @@ const operatingInputs = [
   "Research archives",
 ]
 
-const leadershipBackground = ["Yandex", "Sber", "Juro", "TrendAgent"]
-const advisoryClients = ["Gazprom", "SweedPOS", "UULA", "Birch"]
+const leadershipBackground: BackgroundItem[] = [
+  {
+    name: "Yandex",
+    description:
+      "A major technology company building search, maps, commerce, mobility, and AI-powered products used at mass-market scale.",
+  },
+  {
+    name: "Sber",
+    description:
+      "One of the region's largest financial and technology ecosystems, spanning banking, digital products, developer platforms, and AI services.",
+  },
+  {
+    name: "Juro",
+    description:
+      "An AI-native contract automation platform built to help teams agree and manage contracts end to end inside the tools they already use.",
+  },
+  {
+    name: "TrendAgent",
+    description:
+      "A real-estate platform and professional community that supports agents through deals, education, and developer partnerships.",
+  },
+]
+
+const advisoryClients: BackgroundItem[] = [
+  {
+    name: "Gazprom",
+    description:
+      "A global energy company operating across exploration, production, transportation, storage, processing, and power generation.",
+  },
+  {
+    name: "SweedPOS",
+    description:
+      "An all-in-one cannabis retail platform combining POS, ecommerce, delivery, loyalty, and business intelligence workflows.",
+  },
+  {
+    name: "UULA",
+    description:
+      "An EdTech company building data-driven learning products and study tools for students across the Arabic-speaking market.",
+  },
+  {
+    name: "Birch",
+    description:
+      "A marketing automation platform for paid social and search teams, with rules, reporting, and launch workflows across major ad platforms.",
+  },
+]
+
+const teachingBackground: BackgroundItem[] = [
+  {
+    name: "School of Education (Universal University)",
+    description:
+      "A school for educators, academic leaders, and program designers focused on contemporary, human-centered approaches to learning design.",
+  },
+  {
+    name: "Netology",
+    description:
+      "A large online education platform focused on digital, design, analytics, and career-oriented learning for modern knowledge work.",
+  },
+  {
+    name: "Bang Bang Education",
+    description:
+      "A design school known for strong studio culture, industry practitioners, and a broad creative community across digital disciplines.",
+  },
+]
 
 function App() {
   return (
@@ -198,7 +264,6 @@ function App() {
             </div>
 
             <div className="max-w-4xl">
-              <p className="section-kicker">Positioning</p>
               <h1 className="max-w-4xl text-5xl leading-none tracking-[-0.06em] text-balance text-foreground sm:text-6xl lg:text-7xl">
                 I build internal research systems that turn customer feedback into
                 product decisions.
@@ -210,9 +275,9 @@ function App() {
                 CX, and sales.
               </p>
               <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground">
-                My background includes Yandex, Sber, Juro, and TrendAgent. I have
-                also advised Gazprom, SweedPOS, UULA, and Birch on how to build
-                internal research capability instead of relying on isolated studies.
+                From small startups to large enterprises, I have built research
+                capability from the inside as an in-house leader and from the
+                outside as a consultant.
               </p>
             </div>
 
@@ -234,12 +299,10 @@ function App() {
                   buttonVariants({ size: "lg", variant: "outline" }),
                   "rounded-full border-primary/20 bg-background/70 px-5 text-sm",
                 )}
-                href="https://www.uxmatters.com/authors/aleksander-fenin/"
-                rel="noreferrer"
-                target="_blank"
+                href="mailto:nerocorax@gmail.com"
               >
-                Read UXMatters
-                <ExternalLink className="size-4" />
+                Drop me an email
+                <ArrowRight className="size-4" />
               </a>
             </div>
 
@@ -254,7 +317,7 @@ function App() {
               </div>
               <div className="metric-chip">
                 <span className="metric-label">Method</span>
-                <span className="metric-value">Automation with accountable traceability</span>
+                <span className="metric-value">Grounded AI Automation</span>
               </div>
             </div>
           </div>
@@ -429,7 +492,7 @@ function App() {
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="grid gap-8 md:grid-cols-3">
             <div className="list-block">
               <div className="flex items-center gap-3 text-primary">
                 <ScrollText className="size-4" />
@@ -437,9 +500,12 @@ function App() {
                   Leadership and in-house work
                 </p>
               </div>
-              <ul className="mt-4 space-y-3 text-lg leading-7 text-foreground">
+              <ul className="detail-list mt-4">
                 {leadershipBackground.map((item) => (
-                  <li key={item}>{item}</li>
+                  <li key={item.name} className="detail-item">
+                    <p className="detail-name">{item.name}</p>
+                    <p className="detail-description">{item.description}</p>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -451,9 +517,29 @@ function App() {
                   Advisory and consulting
                 </p>
               </div>
-              <ul className="mt-4 space-y-3 text-lg leading-7 text-foreground">
+              <ul className="detail-list mt-4">
                 {advisoryClients.map((item) => (
-                  <li key={item}>{item}</li>
+                  <li key={item.name} className="detail-item">
+                    <p className="detail-name">{item.name}</p>
+                    <p className="detail-description">{item.description}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="list-block">
+              <div className="flex items-center gap-3 text-primary">
+                <BookOpenText className="size-4" />
+                <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-primary/75">
+                  Teaching
+                </p>
+              </div>
+              <ul className="detail-list mt-4">
+                {teachingBackground.map((item) => (
+                  <li key={item.name} className="detail-item">
+                    <p className="detail-name">{item.name}</p>
+                    <p className="detail-description">{item.description}</p>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -529,11 +615,9 @@ function App() {
                   buttonVariants({ size: "lg" }),
                   "w-full rounded-full px-5 text-sm font-medium shadow-sm sm:w-auto",
                 )}
-                href="https://www.linkedin.com/in/alexander-fenin/"
-                rel="noreferrer"
-                target="_blank"
+                href="mailto:nerocorax@gmail.com"
               >
-                Message on LinkedIn
+                Drop me an email
                 <ArrowRight className="size-4" />
               </a>
               <a
@@ -541,13 +625,16 @@ function App() {
                   buttonVariants({ size: "lg", variant: "outline" }),
                   "w-full rounded-full border-primary/20 bg-background/70 px-5 text-sm sm:w-auto",
                 )}
-                href="https://www.uxmatters.com/authors/aleksander-fenin/"
+                href="https://www.linkedin.com/in/alexander-fenin/"
                 rel="noreferrer"
                 target="_blank"
               >
-                Browse published articles
+                Message on LinkedIn
                 <ExternalLink className="size-4" />
               </a>
+              <p className="text-sm text-muted-foreground">
+                nerocorax@gmail.com
+              </p>
             </div>
           </div>
         </section>
