@@ -1,0 +1,244 @@
+.page-shell {
+  position: relative;
+  overflow: clip;
+}
+
+.page-aura {
+  pointer-events: none;
+  position: fixed;
+  z-index: -1;
+  height: 32rem;
+  width: 32rem;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.55;
+}
+
+.page-aura-left {
+  left: -10rem;
+  top: 6rem;
+  background: rgba(177, 195, 144, 0.22);
+}
+
+.page-aura-right {
+  right: -8rem;
+  top: 28rem;
+  background: rgba(199, 214, 177, 0.18);
+}
+
+.reveal {
+  animation: rise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+.section-kicker {
+  margin: 0 0 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--primary) 74%, transparent);
+}
+
+.section-title {
+  max-width: 34rem;
+  font-family: var(--font-heading);
+  font-size: clamp(2.3rem, 4vw, 3.65rem);
+  line-height: 0.97;
+  letter-spacing: -0.06em;
+  text-wrap: balance;
+}
+
+.section-copy {
+  margin-top: 1.25rem;
+  max-width: 34rem;
+  font-size: 1.02rem;
+  line-height: 1.85;
+  color: var(--muted-foreground);
+}
+
+.metric-chip {
+  display: flex;
+  min-height: 8rem;
+  flex-direction: column;
+  justify-content: space-between;
+  border-top: 1px solid color-mix(in oklab, var(--border) 92%, transparent);
+  padding-top: 1rem;
+}
+
+.metric-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--foreground) 55%, transparent);
+}
+
+.metric-value {
+  max-width: 15rem;
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  color: var(--foreground);
+}
+
+.photo-shell {
+  position: relative;
+  aspect-ratio: 0.84;
+  width: min(100%, 31rem);
+  overflow: hidden;
+  border-radius: 2rem;
+  border: 1px solid color-mix(in oklab, var(--border) 88%, transparent);
+  background:
+    linear-gradient(180deg, rgba(250, 248, 241, 0.4), rgba(250, 248, 241, 0)),
+    linear-gradient(135deg, rgba(177, 195, 144, 0.24), rgba(255, 255, 255, 0) 30%);
+  box-shadow: 0 40px 120px -70px rgba(23, 41, 26, 0.55);
+}
+
+.photo-shell::before {
+  content: "";
+  position: absolute;
+  inset: 1rem;
+  border-radius: 1.3rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.photo-shell::after {
+  content: "";
+  position: absolute;
+  inset: auto auto 0 0;
+  height: 48%;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(13, 23, 16, 0) 8%, rgba(13, 23, 16, 0.24));
+  pointer-events: none;
+}
+
+.photo-chip {
+  position: absolute;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: rgba(251, 250, 245, 0.88);
+  padding: 0.65rem 0.95rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(26, 38, 29, 0.86);
+  backdrop-filter: blur(12px);
+}
+
+.photo-chip-top {
+  left: 1rem;
+  top: 1rem;
+}
+
+.photo-chip-bottom {
+  left: 1rem;
+  bottom: 1rem;
+  max-width: calc(100% - 2rem);
+}
+
+.signal-block {
+  border-top: 1px solid color-mix(in oklab, var(--border) 92%, transparent);
+  padding-top: 1.5rem;
+}
+
+.system-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 1.15rem;
+  border-top: 1px dashed color-mix(in oklab, var(--primary) 22%, transparent);
+}
+
+.system-step {
+  position: relative;
+  border-top: 1px solid color-mix(in oklab, var(--border) 92%, transparent);
+  padding-top: 1.5rem;
+  background: linear-gradient(180deg, rgba(177, 195, 144, 0.05), rgba(177, 195, 144, 0));
+}
+
+.case-row {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.case-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--primary) 76%, transparent);
+}
+
+.list-block {
+  border-top: 1px solid color-mix(in oklab, var(--border) 92%, transparent);
+  padding-top: 1.25rem;
+}
+
+.article-link {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid color-mix(in oklab, var(--border) 92%, transparent);
+  padding-top: 1.5rem;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    color 180ms ease;
+}
+
+.article-link:hover {
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .case-row {
+    grid-template-columns: 14rem minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .photo-shell {
+    border-radius: 1.5rem;
+  }
+
+  .photo-chip {
+    font-size: 0.62rem;
+    letter-spacing: 0.13em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    animation: none;
+  }
+
+  .article-link:hover {
+    transform: none;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
