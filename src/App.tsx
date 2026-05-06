@@ -299,7 +299,8 @@ function App() {
               <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground">
                 From small startups to large enterprises, I have built research
                 capability from the inside as an in-house leader and from the
-                outside as a consultant.
+                outside as a consultant. I bring 10+ years in research and a
+                major in social psychology.
               </p>
             </div>
 
@@ -413,9 +414,10 @@ function App() {
                 reusable evidence.
               </h2>
               <p className="section-copy">
-                The goal is not another repository. It is a decision system:
-                something product teams can query, audit, prioritise, and defend in
-                front of leadership without losing the path back to real users.
+                The goal is not another repository, but rather a decision
+                system: something product teams can query, audit, prioritise,
+                and defend in front of leadership without losing the path back
+                to real users.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {operatingInputs.map((input) => (
