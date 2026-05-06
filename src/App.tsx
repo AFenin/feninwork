@@ -283,6 +283,12 @@ function App() {
               <Badge variant="outline" className="rounded-full border-primary/20 bg-primary/6 px-3">
                 LLM-powered feedback loops
               </Badge>
+              <Badge variant="outline" className="rounded-full border-primary/20 bg-primary/6 px-3">
+                10+ years in research
+              </Badge>
+              <Badge variant="outline" className="rounded-full border-primary/20 bg-primary/6 px-3">
+                Major in Social Psychology
+              </Badge>
             </div>
 
             <div className="max-w-4xl">
@@ -299,8 +305,7 @@ function App() {
               <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground">
                 From small startups to large enterprises, I have built research
                 capability from the inside as an in-house leader and from the
-                outside as a consultant. I bring 10+ years in research and a
-                major in social psychology.
+                outside as a consultant.
               </p>
             </div>
 
